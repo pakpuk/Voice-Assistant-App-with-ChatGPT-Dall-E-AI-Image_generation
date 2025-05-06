@@ -26,6 +26,12 @@ class _WlcMessageWidgetState extends State<WlcMessageWidget> {
             bottomLeft: Radius.circular(16),
             bottomRight: Radius.circular(16)),
       ),
+      child: const Text("Good Morning! How can I help you today?",
+          style: TextStyle(
+            fontFamily: 'Cera Pro',
+            color: Pallete.mainFontColor,
+            fontSize: 25,
+          )),
     );
   }
 }
