@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:voice_assistant_app/componants/box_feature.dart';
 import 'package:voice_assistant_app/componants/profile_widget.dart';
 import 'package:voice_assistant_app/componants/wlc_message_widget.dart';
-import 'package:voice_assistant_app/theming/Text.dart';
+
 import 'package:voice_assistant_app/theming/colors.dart';
 import 'package:voice_assistant_app/utils/constants.dart';
 
@@ -17,7 +18,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(TextsApp.Appbartitle),
+        backgroundColor: Pallete.whiteColor,
+        title: Text(Constants.Appbartitle),
         centerTitle: true,
         leading: Icon(Icons.menu),
       ),
@@ -50,9 +52,30 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Column(
-            children: [],
+            children: [
+              BoxFeature(
+                boxcolor: Pallete.firstSuggestionBoxColor,
+                boxtitle: Constants.firsbxtitl,
+                boxsubtitle: Constants.firsboxsubtitle,
+              ),
+              BoxFeature(
+                boxcolor: Pallete.secondSuggestionBoxColor,
+                boxtitle: Constants.scnbxtitl,
+                boxsubtitle: Constants.secnboxsubtitle,
+              ),
+              BoxFeature(
+                boxcolor: Pallete.thirdSuggestionBoxColor,
+                boxtitle: Constants.firsbxtitl,
+                boxsubtitle: Constants.thirdboxsubtitle,
+              )
+            ],
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Pallete.firstSuggestionBoxColor,
+        child: Icon(Icons.mic),
       ),
     );
   }
