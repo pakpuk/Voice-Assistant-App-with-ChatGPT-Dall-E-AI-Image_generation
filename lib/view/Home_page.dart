@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:voice_assistant_app/componants/box_feature.dart';
 import 'package:voice_assistant_app/componants/profile_widget.dart';
 import 'package:voice_assistant_app/componants/wlc_message_widget.dart';
+import 'package:voice_assistant_app/service/gemini_service.dart';
 
 import 'package:voice_assistant_app/theming/colors.dart';
 import 'package:voice_assistant_app/utils/constants.dart';
@@ -116,11 +119,34 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           if (await speechToText.hasPermission && speechToText.isNotListening) {
+            // المستخدم أعطى صلاحية المايك ولم يبدأ الاستماع، نبدأ نستمع
             await startListening();
           } else if (speechToText.isListening) {
+            // إذا كنا نستمع الآن، نوقف الاستماع
             await stopListening();
+
+            if (lastWords.isNotEmpty) {
+              // إذا المستخدم قال حاجة (lastWords فيه كلام)
+              final response = await GeminiService.getGeminiResponse(lastWords);
+
+              // نتأكد هل الرد صورة ولا نص (عن طريق التأكد من وجود base64 أو مفاتيح معروفة)
+              final isImage = response.contains('data:image');
+
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: Text(isImage ? '🎨 صورة تم توليدها' : '🤖 رد Gemini'),
+                  content: isImage
+                      ? Image.memory(
+                          base64Decode(response.split(',').last),
+                        )
+                      : Text(response),
+                ),
+              );
+            }
           } else {
-            speechToText.stop();
+            // لا يوجد صلاحية أو شيء آخر، نوقف الاستماع لو فيه محاولة معلقة
+            await speechToText.stop();
           }
         },
         backgroundColor: Pallete.firstSuggestionBoxColor,
