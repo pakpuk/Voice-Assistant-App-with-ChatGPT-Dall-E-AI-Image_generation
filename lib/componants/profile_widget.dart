@@ -7,24 +7,32 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get screen width for responsiveness
+    final screenWidth = MediaQuery.of(context).size.width;
+    // Scale profile size (120 is base size)
+    final profileSize = screenWidth * 0.3; // 30% of screen width
+
     return Stack(
       children: [
         Container(
           margin: const EdgeInsets.only(top: 8),
-          height: 120,
-          width: 120,
+          height: profileSize,
+          width: profileSize,
           decoration: BoxDecoration(
             color: Pallete.assistantCircleColor,
             shape: BoxShape.circle,
           ),
         ),
         Container(
-          height: 123,
-          width: 120,
+          height: profileSize + 3, // same +3 offset as original
+          width: profileSize,
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(Constants.assetAvatar)),
+            image: DecorationImage(
+              image: AssetImage(Constants.assetAvatar),
+              fit: BoxFit.cover,
+            ),
           ),
-        )
+        ),
       ],
     );
   }

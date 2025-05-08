@@ -11,27 +11,33 @@ class WlcMessageWidget extends StatefulWidget {
 class _WlcMessageWidgetState extends State<WlcMessageWidget> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 40).copyWith(
-        top: 30,
+      margin: EdgeInsets.symmetric(horizontal: screenWidth * 0.1).copyWith(
+        top: screenHeight * 0.03,
       ),
-      padding: EdgeInsetsDirectional.symmetric(
-        vertical: 10,
-        horizontal: 20,
+      padding: EdgeInsets.symmetric(
+        vertical: screenHeight * 0.015,
+        horizontal: screenWidth * 0.05,
       ),
       decoration: BoxDecoration(
         border: Border.all(color: Pallete.assistantCircleColor),
         borderRadius: BorderRadius.only(
-            topRight: Radius.circular(16),
-            bottomLeft: Radius.circular(16),
-            bottomRight: Radius.circular(16)),
+          topRight: Radius.circular(screenWidth * 0.04),
+          bottomLeft: Radius.circular(screenWidth * 0.04),
+          bottomRight: Radius.circular(screenWidth * 0.04),
+        ),
       ),
-      child: const Text("Good Morning! How can I help you today?",
-          style: TextStyle(
-            fontFamily: 'Cera Pro',
-            color: Pallete.mainFontColor,
-            fontSize: 25,
-          )),
+      child: Text(
+        "Good Morning! How can I help you today?",
+        style: TextStyle(
+          fontFamily: 'Cera Pro',
+          color: Pallete.mainFontColor,
+          fontSize: screenWidth * 0.06,
+        ),
+      ),
     );
   }
 }

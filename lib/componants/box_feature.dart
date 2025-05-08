@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:voice_assistant_app/theming/colors.dart';
-import 'package:voice_assistant_app/utils/constants.dart';
 
 class BoxFeature extends StatelessWidget {
   final Color boxcolor;
   final String boxtitle;
   final String boxsubtitle;
+
   const BoxFeature({
     super.key,
     required this.boxcolor,
@@ -15,15 +15,23 @@ class BoxFeature extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      margin: EdgeInsets.symmetric(
+        horizontal: screenWidth * 0.05,
+        vertical: screenHeight * 0.012,
+      ),
       decoration: BoxDecoration(
-          color: boxcolor, borderRadius: BorderRadius.all(Radius.circular(20))),
+        color: boxcolor,
+        borderRadius: BorderRadius.all(Radius.circular(screenWidth * 0.05)),
+      ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20.0).copyWith(
-          left: 15,
-        ),
+        padding: EdgeInsets.symmetric(
+          vertical: screenHeight * 0.025,
+        ).copyWith(left: screenWidth * 0.04),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -32,19 +40,20 @@ class BoxFeature extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Cera Pro',
-                fontSize: 20,
+                fontSize: screenWidth * 0.05,
                 color: Pallete.mainFontColor,
               ),
             ),
             SizedBox(
-              height: 8,
+              height: screenHeight * 0.01,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: screenWidth * 0.025),
               child: Text(
                 boxsubtitle,
                 style: TextStyle(
                   color: Pallete.blackColor,
+                  fontSize: screenWidth * 0.04,
                 ),
               ),
             ),
