@@ -1,16 +1,28 @@
-# voice_assistant_app
+# 🎙️ AI Voice Assistant App (Flutter)
 
-A new Flutter project.
+A smart, responsive AI-powered voice assistant built using **Flutter**. This mobile app leverages Google's **Gemini AI**, **DALL·E image generation**, and voice capabilities to deliver an intuitive assistant experience. It responds to voice queries, fetches intelligent answers via HTTP requests, and displays text/image results in real-time.
 
-## Getting Started
+## ✨ Features
 
-This project is a starting point for a Flutter application.
+- 🎤 Voice input via `speech_to_text` plugin  
+- 🧠 Gemini AI integration for natural responses  
+- 🖼️ AI image generation (DALL·E) support  
+- 🌐 HTTP-based requests with the `http` package  
+- 📱 Fully responsive UI for all screen sizes  
+- ⚡ Fast, interactive, and easy to use
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter** (Frontend Framework)  
+- **Dart**  
+- **Gemini AI** API  
+- **DALL·E** (Optional Image generation)  
+- `speech_to_text` Flutter plugin  
+- `http` package for networking
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🔧 Installation
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/yourusername/voice-assistant-app.git
+   cd voice-assistant-app
