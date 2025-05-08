@@ -126,10 +126,8 @@ class _HomePageState extends State<HomePage> {
             await stopListening();
 
             if (lastWords.isNotEmpty) {
-              // إذا المستخدم قال حاجة (lastWords فيه كلام)
               final response = await GeminiService.getGeminiResponse(lastWords);
 
-              // نتأكد هل الرد صورة ولا نص (عن طريق التأكد من وجود base64 أو مفاتيح معروفة)
               final isImage = response.contains('data:image');
 
               showDialog(
@@ -145,7 +143,6 @@ class _HomePageState extends State<HomePage> {
               );
             }
           } else {
-            // لا يوجد صلاحية أو شيء آخر، نوقف الاستماع لو فيه محاولة معلقة
             await speechToText.stop();
           }
         },
